@@ -1,9 +1,11 @@
 package fr.univrouen.rss22xml.repository;
 
-import fr.univrouen.rss22xml.model.Item;
+import fr.univrouen.rss22xml.model.Link;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ItemRepository extends JpaRepository<Item,String> {
+public interface LinkRepository extends JpaRepository<Link ,Long> {
+
 }

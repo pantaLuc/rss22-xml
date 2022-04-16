@@ -1,25 +1,31 @@
 package fr.univrouen.rss22xml.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 
 
-
+@Entity
+@Table(name="link")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
         "value"
 })
 @XmlRootElement(name = "link", namespace = "http://univrouen.fr/rss22")
 public class Link {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
+    @Column(name="value")
     @XmlValue
     protected String value;
     @XmlAttribute(name = "href")
+    @Column(name="href")
     @XmlSchemaType(name = "anyURI")
     protected String href;
+    @Column(name="rel")
     @XmlAttribute(name = "rel")
     protected String rel;
+    @Column(name="type")
     @XmlAttribute(name = "type")
     protected String type;
 
