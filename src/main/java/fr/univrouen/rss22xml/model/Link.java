@@ -1,6 +1,10 @@
 package fr.univrouen.rss22xml.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.*;
+
+
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
