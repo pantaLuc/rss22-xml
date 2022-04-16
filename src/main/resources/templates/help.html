@@ -22,7 +22,6 @@
     <table class="table table-hover">
         <thead>
         <tr>
-            <th scope="col">Type</th>
             <th scope="col">URL</th>
             <th scope="col">Méthode attendue</th>
             <th scope="col">Résumé de l’opération</th>
@@ -30,64 +29,54 @@
         </thead>
         <tbody>
         <tr class="table-active">
-            <th scope="row">Active</th>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
+            <td>/</td>
+            <td>GET</td>
+            <td>page d' accueil de l' application </td>
         </tr>
-        <tr>
-            <th scope="row">Default</th>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
+        <tr class="table-active">
+            <td>/help</td>
+            <td>GET</td>
+            <td>page d' aide des fonction à utiliser </td>
         </tr>
-        <tr class="table-primary">
-            <th scope="row">Primary</th>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
+        <tr class="table-active">
+            <td>/rss22/resume/xml</td>
+            <td>GET</td>
+            <td>Liste des articles stockes dans la Bd </td>
         </tr>
-        <tr class="table-secondary">
-            <th scope="row">Secondary</th>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
+        <tr class="table-active">
+            <td>/rss22/resume/xml</td>
+            <td>GET</td>
+            <td>Liste des articles stockes dans la Bd </td>
         </tr>
-        <tr class="table-success">
-            <th scope="row">Success</th>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
+        <tr class="table-active">
+            <td>/rss22/resume/html</td>
+            <td>GET</td>
+            <td>Affiche la liste des articles stockés</td>
         </tr>
-        <tr class="table-danger">
-            <th scope="row">Danger</th>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
+        <tr class="table-active">
+            <td>/rss22/resume/xml/{guid}</td>
+            <td>GET</td>
+            <td>Affiche le contenu complet de l’article dont l’identifiant est {guid}</td>
         </tr>
-        <tr class="table-warning">
-            <th scope="row">Warning</th>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
+        <tr class="table-active">
+            <td>/rss22/resume/xml/{guid}</td>
+            <td>GET</td>
+            <td>Affiche le contenu complet de l’article dont l’identifiant est {guid}</td>
         </tr>
-        <tr class="table-info">
-            <th scope="row">Info</th>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
+        <tr class="table-active">
+            <td>/rss22/resume/html/{guid}</td>
+            <td>GET</td>
+            <td>Affiche le contenu complet de l’article dont l’identifiant est {guid}</td>
         </tr>
-        <tr class="table-light">
-            <th scope="row">Light</th>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
+        <tr class="table-active">
+            <td>rss22/insert</td>
+            <td>POST</td>
+            <td>Flux XML décrivant le flux rss22 à ajouter, conforme au schéma xsd</td>
         </tr>
-        <tr class="table-dark">
-            <th scope="row">Dark</th>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
+        <tr class="table-active">
+            <td>/rss22/delete/{guid}</td>
+            <td>DELETE</td>
+            <td>Suppression de l’article dont l’identifiant est {guid}</td>
         </tr>
         </tbody>
     </table>
