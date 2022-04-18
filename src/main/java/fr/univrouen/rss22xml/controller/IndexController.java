@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 
 @Controller
 public class IndexController {
-    @RequestMapping(value = "/index" , method = RequestMethod.GET)
+    @RequestMapping(value = "/" , method = RequestMethod.GET)
     String getIndex(Model model) {
         model.addAttribute("something" ,"comming from the controller");
         return "index";
@@ -23,4 +23,7 @@ public class IndexController {
     String getHelp(Model model){
         return "help";
     }
+
+
+
 }

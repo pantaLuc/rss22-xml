@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body class="container my-4 flex justify-content-between">
+<div class="col-xs-1" align="center">
+    <img th:src="@{/img/logo.png}"   width="200" height="120">
+    <hr class="my-4">
+</div>
+<div class="container">
+    <h1 class="text-center" >List of Items </h1>
+    <h2 class="text-center">Version : V1.0</h2>
+
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">guid </th>
+            <th scope="col">date</th>
+            <th scope="col">title</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="table-active" th:each="item:${items}">
+            <td th:utext="${item.getGuid()}" }>hj</td>
+            <td th:utext="${item.getPublished()}">GET</td>
+            <td th:utext="${item.getTitle()}">page d' accueil de l' application </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+</div>
+
+</body>
+</html>

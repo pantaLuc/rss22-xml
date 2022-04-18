@@ -1,0 +1,94 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://univrouen.fr/rss22" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="name" type="xs:string"/>
+    <xs:element name="uri" type="xs:string"/>
+    <xs:element name="guid" type="xs:string"/>
+    <xs:element name="title" type="xs:string"/>
+    <xs:element name="category">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute type="xs:string" name="term" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="published" type="xs:string"/>
+    <xs:element name="image">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute type="xs:string" name="alt" use="optional"/>
+                    <xs:attribute type="xs:string" name="href" use="optional"/>
+                    <xs:attribute type="xs:short" name="length" use="optional"/>
+                    <xs:attribute type="xs:string" name="type" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="content">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute type="xs:string" name="href" use="optional"/>
+                    <xs:attribute type="xs:string" name="type" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="contributor">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="rss:name" xmlns:rss="http://univrouen.fr/rss22"/>
+                <xs:element ref="rss:uri" xmlns:rss="http://univrouen.fr/rss22"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="author">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="rss:name" xmlns:rss="http://univrouen.fr/rss22"/>
+                <xs:element ref="rss:uri" xmlns:rss="http://univrouen.fr/rss22"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="pubDate" type="xs:string"/>
+    <xs:element name="copyright" type="xs:string"/>
+    <xs:element name="link">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute type="xs:anyURI" name="href"/>
+                    <xs:attribute type="xs:string" name="rel"/>
+                    <xs:attribute type="xs:string" name="type"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="item">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="rss:guid" xmlns:rss="http://univrouen.fr/rss22"/>
+                <xs:element ref="rss:title" xmlns:rss="http://univrouen.fr/rss22"/>
+                <xs:element ref="rss:category" xmlns:rss="http://univrouen.fr/rss22"/>
+                <xs:element ref="rss:published" xmlns:rss="http://univrouen.fr/rss22"/>
+                <xs:element ref="rss:image" xmlns:rss="http://univrouen.fr/rss22"/>
+                <xs:element ref="rss:content" xmlns:rss="http://univrouen.fr/rss22"/>
+                <xs:element ref="rss:contributor" minOccurs="0" xmlns:rss="http://univrouen.fr/rss22"/>
+                <xs:element ref="rss:author" minOccurs="0" xmlns:rss="http://univrouen.fr/rss22"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="feed">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="rss:title" xmlns:rss="http://univrouen.fr/rss22"/>
+                <xs:element ref="rss:pubDate" xmlns:rss="http://univrouen.fr/rss22"/>
+                <xs:element ref="rss:copyright" xmlns:rss="http://univrouen.fr/rss22"/>
+                <xs:element ref="rss:link" xmlns:rss="http://univrouen.fr/rss22"/>
+                <xs:element ref="rss:item" maxOccurs="unbounded" minOccurs="0" xmlns:rss="http://univrouen.fr/rss22"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="lang"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+

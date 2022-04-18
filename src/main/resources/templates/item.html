@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body class="container my-4 flex justify-content-between">
+<div class="col-xs-1" align="center">
+    <img th:src="@{/img/logo.png}"   width="200" height="120">
+    <hr class="my-4">
+</div>
+<div class="container" align="center">
+    <h1 class="text-center">Detail d' un Article </h1>
+    <h2 class="text-center">Version : V1.0</h2>
+    <div class="card border-success mb-3" style="max-width: 20rem;">
+        <div class="card-header" th:utext="${item}">Header</div>
+        <div class="card-body">
+            <h4 class="card-title">Success card title</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

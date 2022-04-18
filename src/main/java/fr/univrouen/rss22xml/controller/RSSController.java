@@ -19,4 +19,5 @@ public class RSSController {
             @RequestParam(value = "guid") String texte) {
         return ("Détail du flux RSS demandé : " + texte);
     }
+
 }
