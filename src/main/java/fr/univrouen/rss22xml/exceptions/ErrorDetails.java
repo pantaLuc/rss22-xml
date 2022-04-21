@@ -1,12 +1,27 @@
 package fr.univrouen.rss22xml.exceptions;
 
 
+import javax.xml.bind.annotation.*;
 import java.util.Date;
-
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder = {
+        "timestamps",
+        "message",
+        "details"
+})
+@XmlRootElement(name = "error")
 public class ErrorDetails {
-    private Date timestamps;
-    private String message;
-    private String details;
+
+    @XmlElement(required = true)
+    @XmlSchemaType(name = "date")
+    protected Date timestamps;
+    @XmlElement(required = true)
+    protected String message;
+    @XmlElement(required = true)
+    protected String details;
+
+    public ErrorDetails() {
+    }
 
     public ErrorDetails(Date timestamps, String message, String details) {
         this.timestamps = timestamps;

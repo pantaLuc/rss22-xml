@@ -16,7 +16,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlRootElement(name = "item")
 public class Item {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @XmlElement(required = true)
     protected Long guid;
     @Column(name="title")
@@ -26,7 +26,6 @@ public class Item {
     @XmlElement(required = true)
     @XmlSchemaType(name = "dateTime")
     protected String published;
-
     public Item() {
     }
 
