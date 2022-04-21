@@ -11,7 +11,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "", propOrder = {
         "guid",
         "title",
-        "published"
+        "published",
+        "content"
 })
 @XmlRootElement(name = "item")
 public class Item {
@@ -26,13 +27,19 @@ public class Item {
     @XmlElement(required = true)
     @XmlSchemaType(name = "dateTime")
     protected String published;
+    @XmlElement(required = true)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "content_id", referencedColumnName = "id")
+    private Content content;
+
     public Item() {
     }
 
-    public Item(Long guid, String title, String published) {
+    public Item(Long guid, String title, String published, Content content) {
         this.guid = guid;
         this.title = title;
         this.published = published;
+        this.content = content;
     }
 
     public Long getGuid() {
@@ -57,6 +64,14 @@ public class Item {
 
     public void setPublished(String published) {
         this.published = published;
+    }
+
+    public Content getContent() {
+        return content;
+    }
+
+    public void setContent(Content content) {
+        this.content = content;
     }
 
     @Override

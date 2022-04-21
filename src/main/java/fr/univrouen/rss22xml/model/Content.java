@@ -23,14 +23,17 @@ public class Content {
     @Column(name="type")
     @XmlAttribute(name = "type")
     protected String type;
+    @OneToOne(mappedBy = "content")
+    private Item item;
 
     public Content() {
     }
 
-    public Content(String value, String href, String type) {
+    public Content(String value, String href, String type, Item item) {
         this.value = value;
         this.href = href;
         this.type = type;
+        this.item = item;
     }
 
     public Long getId() {
@@ -63,5 +66,13 @@ public class Content {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
     }
 }
