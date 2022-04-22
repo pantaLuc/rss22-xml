@@ -28,53 +28,62 @@ public class Link {
     @Column(name="type")
     @XmlAttribute(name = "type")
     protected String type;
+    @OneToOne(mappedBy = "link")
+    private Feed feed;
 
+    public Link(String value, String href, String rel, String type, Feed feed) {
+        this.value = value;
+        this.href = href;
+        this.rel = rel;
+        this.type = type;
+        this.feed = feed;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getValue() {
         return value;
     }
 
-
     public void setValue(String value) {
         this.value = value;
     }
-
 
     public String getHref() {
         return href;
     }
 
-
-    public void setHref(String value) {
-        this.href = value;
+    public void setHref(String href) {
+        this.href = href;
     }
 
     public String getRel() {
         return rel;
     }
 
-
-    public void setRel(String value) {
-        this.rel = value;
-    }
-
-    public Link() {
-    }
-
-    public Link(String value, String href, String rel, String type) {
-        this.value = value;
-        this.href = href;
+    public void setRel(String rel) {
         this.rel = rel;
-        this.type = type;
     }
 
     public String getType() {
         return type;
     }
 
-
-    public void setType(String value) {
-        this.type = value;
+    public void setType(String type) {
+        this.type = type;
     }
 
+    public Feed getFeed() {
+        return feed;
+    }
+
+    public void setFeed(Feed feed) {
+        this.feed = feed;
+    }
 }
