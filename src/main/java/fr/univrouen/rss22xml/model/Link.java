@@ -31,6 +31,9 @@ public class Link {
     @OneToOne(mappedBy = "link")
     private Feed feed;
 
+    public Link() {
+    }
+
     public Link(String value, String href, String rel, String type, Feed feed) {
         this.value = value;
         this.href = href;

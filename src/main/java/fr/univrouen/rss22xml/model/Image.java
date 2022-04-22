@@ -1,5 +1,6 @@
 package fr.univrouen.rss22xml.model;
 
+import javax.persistence.Id;
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
