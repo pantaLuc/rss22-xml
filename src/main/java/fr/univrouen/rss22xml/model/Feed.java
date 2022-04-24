@@ -39,6 +39,9 @@ public class Feed {
     @XmlAttribute(name = "lang")
     protected String lang;
 
+    public Feed() {
+    }
+
     public Feed(String title, String pubDate, String copyright, Link link, List<Item> item, String lang) {
         this.title = title;
         this.pubDate = pubDate;

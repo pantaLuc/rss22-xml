@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class ItemController {
@@ -22,10 +23,10 @@ public class ItemController {
 
         return items;
     }
-    public ResponseEntity<Item> getItemById(@PathVariable(value = "guid") Long itemguid) throws RessourceNotFoundExceptions {
+    public Item getItemById(@PathVariable(value = "guid") UUID itemguid) throws RessourceNotFoundExceptions {
         Item item = itemRepository.findById(itemguid)
                 .orElseThrow(() -> new RessourceNotFoundExceptions("Item not found for this id ::" + itemguid));
-        return  ResponseEntity.ok().body(item);
+        return  item;
     }
 
     @RequestMapping(value="/rss22/resume/html" ,method = RequestMethod.GET)
@@ -34,7 +35,7 @@ public class ItemController {
         return "listItem";
     }
     @RequestMapping(value="/rss22/resume/html/{guid}")
-    String getItem(@PathVariable(value = "guid")Long item,Model model ) throws RessourceNotFoundExceptions {
+    String getItem(@PathVariable(value = "guid")UUID item,Model model ) throws RessourceNotFoundExceptions {
         model.addAttribute("item" ,getItemById(item));
         return "item";
     }

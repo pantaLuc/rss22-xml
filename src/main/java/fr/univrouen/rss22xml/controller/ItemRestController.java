@@ -31,20 +31,20 @@ public class ItemRestController {
     @PostMapping(value = "/insert" ,consumes = "application/xml")
     public  Item createEmployee(@RequestBody Item item){
         UUID uuid = UUID.randomUUID();
-        String s = Long.toString(uuid.getMostSignificantBits(), 40).replace("-", "") ;
-        item.setGuid(Long.parseLong(s));
+
+        item.setGuid(uuid);
         return this.itemRepository.save(item);
     }
 
     // get  item by  guid
     @GetMapping("/xml/{guid}")
-    public ResponseEntity<Item> getItemById(@PathVariable(value = "guid") Long itemguid) throws RessourceNotFoundExceptions {
+    public ResponseEntity<Item> getItemById(@PathVariable(value = "guid") UUID itemguid) throws RessourceNotFoundExceptions {
         Item item = itemRepository.findById(itemguid)
                 .orElseThrow(() -> new RessourceNotFoundExceptions("Item not found for this id ::" + itemguid));
         return  ResponseEntity.ok().body(item);
     }
     @DeleteMapping(value = "/delete/{guid}",produces =MediaType.APPLICATION_XML_VALUE )
-    public Map<String ,Boolean> deleteEmployee(@PathVariable(value="guid") Long itemguid)throws RessourceNotFoundExceptions{
+    public Map<String ,Boolean> deleteEmployee(@PathVariable(value="guid") UUID itemguid)throws RessourceNotFoundExceptions{
           Item item= itemRepository.findById(itemguid)
                 .orElseThrow(()->new RessourceNotFoundExceptions("Item not Found for guid ::"+itemguid));
         this.itemRepository.delete(item);

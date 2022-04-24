@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.*;
 
 @Entity
 @Table(name="link")
-@XmlAccessorType(XmlAccessType.FIELD)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "", propOrder = {
         "value"
 })
@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.*;
 public class Link {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long id;
+    private Long id;
     @Column(name="value")
     @XmlValue
     protected String value;
