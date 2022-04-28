@@ -16,7 +16,6 @@ public class FeedController {
 
     @PostMapping(value="/feed" ,consumes = "application/xml")
     public Feed createContent(@RequestBody Feed feed){
-     feed.setId(3L);
      return this.feedRepository.save(feed);
     }
 }

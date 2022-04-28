@@ -5,6 +5,8 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 
@@ -18,8 +20,10 @@ import java.util.UUID;
         "published",
         "image",
         "content",
-
+        "author",
+        "contributor"
 })
+
 @XmlRootElement(name = "item")
 public class Item {
     @Id
@@ -50,16 +54,24 @@ public class Item {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
+    @XmlElement(required = true)
+    @ManyToMany(fetch=FetchType.EAGER )
+    private Set<Author> author;
+    @XmlElement(required = true)
+    @ManyToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
+    private Set<Contributor> contributor;
 
     public Item() {
     }
 
-    public Item(UUID guid, String title, String published, Content content, Image image) {
-        this.guid = guid;
+    public Item(String title, String published, Content content, Image image, Category category, Set<Author> author, Set<Contributor> contributor) {
         this.title = title;
         this.published = published;
         this.content = content;
         this.image = image;
+        this.category = category;
+        this.author = author;
+        this.contributor = contributor;
     }
 
     public UUID getGuid() {
@@ -100,6 +112,30 @@ public class Item {
 
     public void setImage(Image image) {
         this.image = image;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Set<Author> getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Set<Author> author) {
+        this.author = author;
+    }
+
+    public Set<Contributor> getContributor() {
+        return contributor;
+    }
+
+    public void setContributor(Set<Contributor> contributor) {
+        this.contributor = contributor;
     }
 
     @Override

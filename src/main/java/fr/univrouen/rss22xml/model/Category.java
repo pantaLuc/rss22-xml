@@ -3,6 +3,7 @@ package fr.univrouen.rss22xml.model;
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -23,12 +24,12 @@ public class Category {
     @XmlAttribute(name = "term")
     protected String term;
     @OneToMany(mappedBy = "category")
-    private List<Item> item;
+    private Set<Item> item;
 
     public Category() {
     }
 
-    public Category(String value, String term, List<Item> item) {
+    public Category(String value, String term, Set<Item> item) {
         this.value = value;
         this.term = term;
         this.item = item;
@@ -58,11 +59,11 @@ public class Category {
         this.term = term;
     }
 
-    public List<Item> getItem() {
+    public Set<Item> getItem() {
         return item;
     }
 
-    public void setItem(List<Item> item) {
+    public void setItem(Set<Item> item) {
         this.item = item;
     }
 }

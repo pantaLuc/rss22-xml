@@ -1,5 +1,4 @@
 package fr.univrouen.rss22xml.model;
-
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
@@ -16,26 +15,29 @@ import java.util.List;
         "link",
         "item"
 })
-@XmlRootElement(name = "feed", namespace = "http://univrouen.fr/rss22")
+@XmlRootElement(name = "feed")
 public class Feed {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    protected Long Id ;
-    @XmlElement(namespace = "http://univrouen.fr/rss22", required = true)
+    private Long id ;
+    @Column(name="title")
+    @XmlElement(required = true)
     protected String title;
-    @XmlElement(namespace = "http://univrouen.fr/rss22", required = true)
+    @Column(name="pubDate")
+    @XmlElement( required = true)
     protected String pubDate;
-    @XmlElement(namespace = "http://univrouen.fr/rss22", required = true)
+    @Column(name="copyright")
+    @XmlElement( required = true)
     protected String copyright;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "link_id", referencedColumnName = "id")
-    @XmlElement(namespace = "http://univrouen.fr/rss22", required = true)
+    @XmlElement( required = true)
     protected Link link;
-    @XmlElement(namespace = "http://univrouen.fr/rss22")
-    @ManyToMany
+    @XmlElement()
+    @ManyToMany(cascade=CascadeType.MERGE)
     protected List<Item> item;
-    @Column(name = "lang")
+    @Column(name="lang")
     @XmlAttribute(name = "lang")
     protected String lang;
 
@@ -52,11 +54,11 @@ public class Feed {
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getTitle() {
