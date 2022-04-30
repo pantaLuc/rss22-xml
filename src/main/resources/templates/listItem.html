@@ -35,21 +35,23 @@
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Modal Heading</h4>
+                    <h4 class="modal-title">Addd Item</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <!-- Modal body -->
-                <div class="modal-body">
-                    <form action="#" th:action="@{/rss22/insert}" method="post" th:object="${item}">
-                       <textarea name="news_content"  th:field="${item}" >
-        ...
+                <form th:action="@{/rss22/insert}" class="modal-body form-control-lg" method="POST" content="application/xml">
+                   <div class="">
+                       <label > Enter an Item</label>
+                       <textarea class="form-control" placeholder="<item>" >
+
                        </textarea>
-                    </form>
-                </div>
+                   </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success" >Add</button>
+                    </div>
+                </form>
                 <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
+
             </div>
         </div>
     </div>
@@ -70,9 +72,9 @@
             <td th:utext="${item.getPublished()}">GET</td>
             <td th:utext="${item.getTitle()}">page d' accueil de l' application </td>
             <td >
-                <form th:action="@{rss22/delete/{guid}(guid=${item.getGuid()})}" th:object="${item}" method="post">
-                    <button type="Submit" class="btn btn-danger ml-2">Delete</button>
-                </form>
+                <a th:href="@{/rss22/delete/{guid}(guid=${item.getGuid()})}" th:object="${item}"  class="btn btn-danger ml-2">
+                    Delete
+                </a>
 
             </td>
         </tr>

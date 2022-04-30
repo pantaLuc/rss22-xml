@@ -43,7 +43,7 @@ public class ItemRestController {
         return  ResponseEntity.ok().body(item);
     }
     @DeleteMapping(value = "/delete/{guid}",produces = MediaType.APPLICATION_XML_VALUE)
-    public Boolean deleteEmployee(@PathVariable(value="guid") UUID itemguid)throws RessourceNotFoundExceptions{
+    public Boolean deleteItem(@PathVariable(value="guid") UUID itemguid)throws RessourceNotFoundExceptions{
           Item item= itemRepository.findById(itemguid)
                 .orElseThrow(()->new RessourceNotFoundExceptions("Item not Found for guid ::"+itemguid));
         this.itemRepository.delete(item);
