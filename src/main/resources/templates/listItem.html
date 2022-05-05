@@ -42,7 +42,7 @@
                 <form th:action="@{/rss22/insert}" class="modal-body form-control-lg" method="POST" content="application/xml">
                    <div class="">
                        <label > Enter an Item</label>
-                       <textarea class="form-control" placeholder="<item>" >
+                       <textarea class="form-control" placeholder="<item>" th:name="item" >
 
                        </textarea>
                    </div>

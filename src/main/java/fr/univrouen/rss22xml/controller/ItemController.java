@@ -48,8 +48,9 @@ public class ItemController {
 
         return  "redirect:/rss22/resume/html";
     }
-    @RequestMapping(value = "/rss22/insert", method = RequestMethod.POST)
+    @RequestMapping(value = "/rss22/insert", method = RequestMethod.POST )
     public String createItem(Model model, @ModelAttribute Item item) {
+
         itemRepository.save(item);
         return "redirect:/rss22/resume/html";
     }
