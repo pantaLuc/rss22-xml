@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="#" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Universit%C3%A9_de_Rouen.png/1200px-Universit%C3%A9_de_Rouen.png" width="200" alt="AdCoin Logo" /></a>
+  <a href="#" target="blank"><img src="https://findvectorlogo.com/wp-content/uploads/2019/09/universite-de-rouen-normandie-vector-logo.png" width="200" alt="AdCoin Logo" /></a>
 </p>
 
   <p align="center"> <a href="#" target="_blank">Projet : Service REST & Client </a> for   Langage Web.</p>
