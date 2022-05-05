@@ -31,7 +31,7 @@ spring.jpa.open-in-view=false
 
 ##Lancez l' application 
 ```bash
-# run the function 
+# Executez 
 $ $ mvn spring-boot:run
 ```
 
