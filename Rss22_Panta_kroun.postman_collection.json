@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "7e720b8b-8d79-4e16-86e2-ddfe971bfacb",
+		"name": "Rss22_Panta_kroun",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Insert an Item",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<item>\n<guid>87654321-4321-4321-4321-210987654321</guid>\n<title>Mon second article</title>\n<published>2022-04-06T10:30:00</published>\n <image alt=\"Des joueurs se préparent pour le tournois de Quidditch à Vincennes\" href=\"https://images.nappy.co/uploads/large/27721609545585oegqt2kighjb2mym4ssxqfieath4vnh6wy23pax8hzqxegz65yq3syymcztfxd5d93lzefgd7ufs438jaofxryik1acih9k0kcem.jpg\" length=\"644\" type=\"jpeg\"/>\n<content href=\"https://www.lexpress.fr/insolite/finistere-une-mysterieuse-inscription-sur-un-rocher-enfin-devoilee_2119267.html\" type=\"text\">\n      les dates correspondent aux moments des faits et de la gravure.\n</content>\n</item>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rss22/insert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rss22",
+						"insert"
+					]
+				},
+				"description": "Transmis Flux XML décrivant le flux rss22 à ajouter, conforme au schéma xsd.  \nOpération Le flux reçu est validé par le schéma XSD de définition rss22  \nSi le flux est déjà présent, (même titre et date) alors une indication d’erreur est retournée.  \nSi l’opération est réussie, alors le flux est ajouté à la base et sa persistance est assurée."
+			},
+			"response": []
+		},
+		{
+			"name": "GET an item",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/rss22/xml/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rss22",
+						"xml",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List of Item",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/rss22/resume/xml",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rss22",
+						"resume",
+						"xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an Item",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/rss22/delete/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rss22",
+						"delete",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

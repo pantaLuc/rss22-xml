@@ -9,7 +9,23 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
+import javax.xml.XMLConstants;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.List;
 import java.util.UUID;
 
@@ -49,9 +65,49 @@ public class ItemController {
         return  "redirect:/rss22/resume/html";
     }
     @RequestMapping(value = "/rss22/insert", method = RequestMethod.POST )
-    public String createItem(Model model, @ModelAttribute Item item) {
-
-        itemRepository.save(item);
+    public String createItem(@RequestParam(value = "itemxml") String xmlInput,Model model) throws RessourceNotFoundExceptions {
+        if (validationxml()==true) {
+            try {
+                JAXBContext context = JAXBContext.newInstance(Item.class);
+                Unmarshaller un = context.createUnmarshaller();
+                Document doc = convertStringToXMLDoc(xmlInput);
+                Item item = (Item) un.unmarshal(doc);
+                itemRepository.save(item);
+                return "redirect:/rss22/resume/html";
+            } catch (JAXBException e) {
+                e.printStackTrace();
+            }
+        }
         return "redirect:/rss22/resume/html";
     }
+
+    public  boolean validationxml()throws RessourceNotFoundExceptions{
+        try {
+            SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+            Schema schema = factory.newSchema(new File("src/main/resources/static/xsd/item.xsd"));
+            Validator validator = schema.newValidator();
+            validator.validate(new StreamSource(new File("src/main/resources/static/xml/item.xml")));
+        } catch (IOException | SAXException e) {
+            System.out.println("Exception: "+e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    private static Document convertStringToXMLDoc(String strXMLValue) {
+
+        try {
+
+            DocumentBuilderFactory dbfactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = dbfactory.newDocumentBuilder();
+            Document doc = builder.parse(new InputSource(new StringReader(strXMLValue)));
+            return doc;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

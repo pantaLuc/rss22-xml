@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Projet Xml</title>
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 </head>
@@ -26,7 +26,7 @@
 
     <!-- Button to Open the Modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-        create an Article
+        create an Item
     </button>
 
     <!-- The Modal -->
@@ -39,10 +39,10 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <!-- Modal body -->
-                <form th:action="@{/rss22/insert}" class="modal-body form-control-lg" method="POST" content="application/xml">
+                <form th:action="@{/rss22/insert}" class="modal-body form-control-lg" method="POST" >
                    <div class="">
                        <label > Enter an Item</label>
-                       <textarea class="form-control" placeholder="<item>" th:name="item" >
+                       <textarea class="form-control" placeholder="<item>" th:name="itemxml"  >
 
                        </textarea>
                    </div>
